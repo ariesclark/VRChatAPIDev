@@ -26,7 +26,7 @@ paths:
   /pet:
     post:
       tags:
-      - "pet"
+      - "pet, user"
       summary: "Add a new pet to the store"
       description: ""
       operationId: "addPet"
