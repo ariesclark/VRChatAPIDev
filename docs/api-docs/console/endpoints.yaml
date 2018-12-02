@@ -30,8 +30,12 @@ paths:
       produces:
       - "application/json"
       responses:
-        405:
+        200:
           description: "Invalid input"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/RemoteConfig"
     put:
       tags:
       - "pet"
@@ -672,6 +676,38 @@ definitions:
         type: "string"
       message:
         type: "string"
+  RemoteConfig:
+    type: "object"
+    properties:
+      messageOfTheDay:
+        type: "string"
+      timeOutWorldId:
+        type: "string"
+      gearDemoRoomId:
+        type: "string"
+
+      releaseServerVersionStandalone:
+        type: "string"
+
+      downloadLinkWindows:
+        type: "string"
+
+      releaseAppVersionStandalone:
+        type: "string"
+
+      devAppVersionStandalone:
+        type: "string"
+
+      devServerVersionStandalone:
+        type: "string"
+
+      devDownloadLinkWindows:
+        type: "string"
+
+      currentTOSVersion:
+        type: "string"
+
+
 externalDocs:
   description: "Find out more about Swagger"
   url: "http://swagger.io"
