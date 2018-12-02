@@ -1,0 +1,17 @@
+<script src="//unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
+
+<script>
+
+window.swaggerUi = new SwaggerUi({
+    url: "https://petstore.swagger.io/v2/swagger.json",
+    dom_id: '#swagger-ui-container',
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIBundle.SwaggerUIStandalonePreset
+    ],
+    layout: "StandaloneLayout"
+  })
+
+</script>
+
+<div id="swagger-ui-container"></div>
