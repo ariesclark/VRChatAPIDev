@@ -7,11 +7,8 @@ info:
 host: "api.vrchat.cloud"
 basePath: "/api/1/"
 tags:
-- name: "pet"
-  description: "Everything about your Pets"
-  externalDocs:
-    description: "Find out more"
-    url: "http://swagger.io"
+- name: "Miscellaneous"
+  description: ""
 - name: "store"
   description: "Access to Petstore orders"
 - name: "user"
@@ -23,33 +20,18 @@ schemes:
 - "https"
 - "http"
 paths:
-  /pet:
-    post:
+  /config:
+    get:
       tags:
-      - "pet", "user"
-      summary: "Add a new pet to the store"
+      - "Miscellaneous"
+      summary: "Remote Config"
       description: ""
-      operationId: "addPet"
-      consumes:
-      - "application/json"
-      - "application/xml"
+      operationId: "config"
       produces:
-      - "application/xml"
       - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Pet object that needs to be added to the store"
-        required: true
-        schema:
-          $ref: "#/definitions/Pet"
       responses:
         405:
           description: "Invalid input"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
     put:
       tags:
       - "pet"
