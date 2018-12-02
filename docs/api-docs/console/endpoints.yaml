@@ -709,6 +709,8 @@ definitions:
         type: "string"
       whiteListedAssetUrls:
         type: "array"
+        json: 
+          unknown: "unknown"
       clientApiKey:
         type: "string"
       viveWindowsUrl:
@@ -759,6 +761,8 @@ definitions:
         type: "string"
       dynamicWorldRows:
         type: "array"
+        json: 
+          unknown: "unknown"
       address:
         type: "string"
       contactEmail:
