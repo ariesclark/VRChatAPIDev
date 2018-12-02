@@ -685,28 +685,104 @@ definitions:
         type: "string"
       gearDemoRoomId:
         type: "string"
-
       releaseServerVersionStandalone:
         type: "string"
-
       downloadLinkWindows:
         type: "string"
-
       releaseAppVersionStandalone:
         type: "string"
-
       devAppVersionStandalone:
         type: "string"
-
       devServerVersionStandalone:
         type: "string"
-
       devDownloadLinkWindows:
         type: "string"
-
       currentTOSVersion:
         type: "string"
-
+      releaseSdkUrl:
+        type: "string"
+      releaseSdkVersion:
+        type: "string"
+      devSdkUrl:
+        type: "string"
+      devSdkVersion:
+        type: "string"
+      whiteListedAssetUrls:
+        type: "array"
+      clientApiKey:
+        type: "string"
+      viveWindowsUrl:
+        type: "string"
+      sdkUnityVersion:
+        type: "string"
+      hubWorldId:
+        type: "string"
+      homeWorldId:
+        type: "string"
+      tutorialWorldId:
+        type: "string"
+      disableEventStream:
+        type: "boolean"
+      disableAvatarGating:
+        type: "boolean"
+      disableFeedbackGating:
+        type: "boolean"
+      disableRegistration:
+        type: "boolean"
+      disableUpgradeAccount:
+        type: "boolean"
+      disableCommunityLabs:
+        type: "boolean"
+      plugin:
+        type: "string"
+      sdkNotAllowedToPublishMessage:
+        type: "string"
+      sdkDeveloperFaqUrl:
+        type: "string"
+      sdkDiscordUrl:
+        type: "string"
+      notAllowedToSelectAvatarInPrivateWorldMessage:
+        type: "string"
+      userVerificationTimeout:
+        type: "int"
+      userUpdatePeriod:
+        type: "int"
+      userVerificationDelay:
+        type: "int"
+      userVerificationRetry:
+        type: "int"
+      worldUpdatePeriod:
+        type: "int"
+      moderationQueryPeriod:
+        type: "int"
+      defaultAvatar:
+        type: "string"
+      dynamicWorldRows:
+        type: "array"
+      address:
+        type: "string"
+      contactEmail:
+        type: "string"
+      supportEmail:
+        type: "string"
+      jobsEmail:
+        type: "string"
+      copyrightEmail:
+        type: "string"
+      moderationEmail:
+        type: "string"
+      disableEmail:
+        type: "boolean"
+      appName:
+        type: "string"
+      serverName:
+        type: "string"
+      deploymentGroup:
+        type: "string"
+      buildVersionTag:
+        type: "string"
+      apiKey:
+        type: "string"
 
 externalDocs:
   description: "Find out more about Swagger"
