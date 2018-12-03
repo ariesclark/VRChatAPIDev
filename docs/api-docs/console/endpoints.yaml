@@ -11,6 +11,8 @@ tags:
   description: ""
 - name: "User"
   description: "Endpoints controlling the current authenticated user."
+- name: "Other users"
+  description: "Endpoints for interacting with other users."
 schemes:
 - "https"
 - "http"
@@ -26,7 +28,7 @@ paths:
       - "application/json"
       responses:
         200:
-          description: "Invalid input"
+          description: "Success"
           schema:
             type: "array"
             items:
@@ -37,7 +39,7 @@ paths:
       - "User"
       summary: "Fetch current user information."
       description: "Fetching the user information requires the apiKey parameter and Authorization header"
-      operationId: "auth/user"
+      operationId: "get/auth/user"
       produces:
       - "application/json"
       parameters:
@@ -55,8 +57,132 @@ paths:
         type: "string"
         format: "base64"
       responses:
-        default:
-          description: "successful operation"
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/CurrentUser"
+    put:
+      tags:
+      - "User"
+      summary: "Update current user information."
+      description: "Updating the user information requires the apiKey parameter and Authorization header"
+      operationId: "put/auth/user"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "apiKey"
+        in: "query"
+        description: "The required apiKey."
+        default: "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"
+        required: true
+        type: "string"
+      - name: "Authorization"
+        in: "header"
+        description: "The basic authentication defining the current user. Base64 encode: username:password"
+        default: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+        required: true
+        type: "string"
+        format: "base64"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/CurrentUser"
+
+  /auth/user/friends:
+    get:
+      tags:
+      - "User"
+      summary: "Fetch current user friends."
+      description: "Fetching the current user friends requires the apiKey parameter and Authorization header"
+      operationId: "get/auth/user/friends"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "apiKey"
+        in: "query"
+        description: "The required apiKey."
+        default: "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"
+        required: true
+        type: "string"
+      - name: "Authorization"
+        in: "header"
+        description: "The basic authentication defining the current user. Base64 encode: username:password"
+        default: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+        required: true
+        type: "string"
+        format: "base64"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/FriendUser"
+  /users:
+    get:
+      tags:
+      - "Other users"
+      summary: "Fetch all users."
+      description: "Fetching all users requires the apiKey parameter and Authorization header"
+      operationId: "get/users"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "apiKey"
+        in: "query"
+        description: "The required apiKey."
+        default: "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"
+        required: true
+        type: "string"
+      - name: "Authorization"
+        in: "header"
+        description: "The basic authentication defining the current user. Base64 encode: username:password"
+        default: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+        required: true
+        type: "string"
+        format: "base64"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+  /users/active:
+    get:
+      tags:
+      - "Other users"
+      summary: "Fetch all active users."
+      description: "Fetching all active users requires the apiKey parameter and Authorization header"
+      operationId: "get/users"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "apiKey"
+        in: "query"
+        description: "The required apiKey."
+        default: "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"
+        required: true
+        type: "string"
+      - name: "Authorization"
+        in: "header"
+        description: "The basic authentication defining the current user. Base64 encode: username:password"
+        default: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+        required: true
+        type: "string"
+        format: "base64"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
 
 definitions:
   RemoteConfig:
@@ -166,6 +292,114 @@ definitions:
         type: "string"
       apiKey:
         type: "string"
+        
+  CurrentUser:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      username:
+        type: "string"
+      displayName:
+        type: "string"
+      pastDisplayNames:
+        type: "null"
+      hasEmail:
+        type: "boolean"
+      hasPendingEmail:
+        type: "boolean"
+      obfuscatedEmail:
+        type: "string"
+      obfuscatedPendingEmail:
+        type: "string"
+      emailVerified:
+        type: "boolean"
+      hasBirthday:
+        type: "boolean"
+      unsubscribe:
+        type: "boolean"
+      friends:
+        type: "null"
+      friendGroupNames:
+        type: "null"
+      currentAvatarImageUrl:
+        type: "string"
+      currentAvatarThumbnailImageUrl:
+        type: "string"
+      currentAvatar:
+        type: "string"
+      currentAvatarAssetUrl:
+        type: "string"
+      acceptedTOSVersion:
+        type: "integer"
+      steamDetails:
+        type: "null"
+      hasLoggedInFromClient:
+        type: "boolean"
+      homeLocation:
+        type: "string"
+      status:
+        type: "string"
+      statusDescription:
+        type: "string"
+      tags:
+        type: "null"
+      developerType:
+        type: "string"
+      last_login:
+        type: "string"
+      isFriend:
+        type: "boolean"
+      friendKey:
+        type: "string"
+        
+  FriendUser:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      username:
+        type: "string"
+      displayName:
+        type: "string"
+      currentAvatarImageUrl:
+        type: "string"
+      currentAvatarThumbnailImageUrl:
+        type: "string"
+      tags:
+        type: "null"
+      developerType:
+        type: "string"
+      status:
+        type: "string"
+      statusDescription:
+        type: "string"
+      friendKey:
+        type: "string"
+      isFriend:
+        type: "boolean"
+      location:
+        type: "string"
+        
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      username:
+        type: "string"
+      displayName:
+        type: "string"
+      currentAvatarImageUrl:
+        type: "string"
+      currentAvatarThumbnailImageUrl:
+        type: "string"
+      tags:
+        type: "null"
+      developerType:
+        type: "string"
+      isFriend:
+        type: "boolean"
 
 externalDocs:
   description: "Find out more about Swagger"
