@@ -146,6 +146,22 @@ paths:
         required: true
         type: "string"
         format: "base64"
+      - name: "search"
+        in: "query"
+        description: "The user to search for."
+        type: "string"
+      - name: "developerType"
+        in: "query"
+        description: "Active user by developer type, none for normal users and internal for moderators"
+        type: "string"
+      - name: "n"
+        in: "query"
+        description: "The amount of users to return."
+        type: "string"
+      - name: "offset"
+        in: "query"
+        description: "The amount of users to skip."
+        type: "string"
       responses:
         200:
           description: "Success"
@@ -157,9 +173,9 @@ paths:
     get:
       tags:
       - "Other users"
-      summary: "GetActiveUser"
+      summary: "Get all online users."
       description: "Fetching all active users requires the apiKey parameter and Authorization header"
-      operationId: "get/users"
+      operationId: "GetActiveUser"
       produces:
       - "application/json"
       parameters:
@@ -176,6 +192,22 @@ paths:
         required: true
         type: "string"
         format: "base64"
+      - name: "search"
+        in: "query"
+        description: "The user to search for."
+        type: "string"
+      - name: "developerType"
+        in: "query"
+        description: "Active user by developer type, none for normal users and internal for moderators"
+        type: "string"
+      - name: "n"
+        in: "query"
+        description: "The amount of users to return."
+        type: "string"
+      - name: "offset"
+        in: "query"
+        description: "The amount of users to skip."
+        type: "string"
       responses:
         200:
           description: "Success"
