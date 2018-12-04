@@ -23,7 +23,7 @@ paths:
       - "Miscellaneous"
       summary: "Remote Config."
       description: ""
-      operationId: "config"
+      operationId: "GetConfig"
       produces:
       - "application/json"
       responses:
@@ -39,7 +39,7 @@ paths:
       - "User"
       summary: "Fetch current user information."
       description: "Fetching the user information requires the apiKey parameter and Authorization header"
-      operationId: "get/auth/user"
+      operationId: "GetCurrentUser"
       produces:
       - "application/json"
       parameters:
@@ -68,7 +68,7 @@ paths:
       - "User"
       summary: "Update current user information."
       description: "Updating the user information requires the apiKey parameter and Authorization header"
-      operationId: "put/auth/user"
+      operationId: "UpdateUser"
       produces:
       - "application/json"
       parameters:
@@ -99,7 +99,7 @@ paths:
       - "User"
       summary: "Fetch current user friends."
       description: "Fetching the current user friends requires the apiKey parameter and Authorization header"
-      operationId: "get/auth/user/friends"
+      operationId: "GetFriends"
       produces:
       - "application/json"
       parameters:
@@ -129,7 +129,7 @@ paths:
       - "Other users"
       summary: "Fetch all users."
       description: "Fetching all users requires the apiKey parameter and Authorization header"
-      operationId: "get/users"
+      operationId: "GetAllUsers"
       produces:
       - "application/json"
       parameters:
@@ -157,7 +157,7 @@ paths:
     get:
       tags:
       - "Other users"
-      summary: "Fetch all active users."
+      summary: "GetActiveUser"
       description: "Fetching all active users requires the apiKey parameter and Authorization header"
       operationId: "get/users"
       produces:
@@ -183,6 +183,79 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/User"
+
+  /users/{username}/name:
+    get:
+      tags:
+      - "Other users"
+      summary: "Fetch a user by thier username."
+      description: "Fetching a user requires the apiKey parameter and Authorization header"
+      operationId: "GetUserByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "apiKey"
+        in: "query"
+        description: "The required apiKey."
+        default: "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"
+        required: true
+        type: "string"
+      - name: "Authorization"
+        in: "header"
+        description: "The basic authentication defining the current user. Base64 encode: username:password"
+        default: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+        required: true
+        type: "string"
+        format: "base64"
+      - name: "username"
+        in: "path"
+        description: "The user to fetch."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+
+  /users/{id}:
+    get:
+      tags:
+      - "Other users"
+      summary: "Fetch a user by their id."
+      description: "Fetching a user requires the apiKey parameter and Authorization header"
+      operationId: "GetUserByID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "apiKey"
+        in: "query"
+        description: "The required apiKey."
+        default: "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"
+        required: true
+        type: "string"
+      - name: "Authorization"
+        in: "header"
+        description: "The basic authentication defining the current user. Base64 encode: username:password"
+        default: "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+        required: true
+        type: "string"
+        format: "base64"
+      - name: "id"
+        in: "path"
+        description: "The user id to fetch."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+
 
 definitions:
   RemoteConfig:
